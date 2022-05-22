@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel size of windows */
@@ -17,7 +18,7 @@ static const char col_gray3[]       = "#bbbbbb";
 //current tag and current window font color
 static const char col_gray4[]       = "#eeeeee";
 //Top bar second color (blue) and active window border color
-static const char col_cyan[]        = "#f59542";
+static const char col_cyan[]        = "#4f3b6b";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -26,7 +27,7 @@ static const char *colors[][3]      = {
 
 /* tagging */
 //tag names (upper left)
-static const char *tags[] = { "", "", "", "", "",  "", "", "", "", "" };
+static const char *tags[] = {  "", "","", "", "", "",  "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -70,12 +71,21 @@ static const char *monitor[] = { "/usr/bin/htop", NULL };
 //sets st as the default terminal
 //static const char *termcmd[]  = { "st", NULL };
 //sets urxvt as the default terminal
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *termcmd[]  = { "st", NULL };
 //volume controls
 static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-
+static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
+/* Control Media Players */
+static const char *medplaypausecmd[] = { "playerctl", "play-pause", NULL };
+static const char *mednextcmd[] = { "playerctl", "next", NULL };
+static const char *medprevcmd[] = { "playerctl", "previous", NULL };
+//flameshot
+static const char *prtscrcmd[] = { "flameshot", "gui", NULL};
 #include "shiftview.c"
 static char *endx[] = { "/bin/sh", "-c", "endx", "externalpipe", NULL };
 static Key keys[] = {
@@ -106,8 +116,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,              		    XK_n,      shiftview,  	   { .i = +1 } },
-	{ MODKEY,              		    XK_b,      shiftview,      { .i = -1 } },
+	{ MODKEY,              		    XK_Right,      shiftview,  	   { .i = +1 } },
+	{ MODKEY,              		    XK_Left,      shiftview,      { .i = -1 } },
     { MODKEY,                       XK_F8,     spawn,          {.v = upvol   } },
     { MODKEY,                       XK_F7,     spawn,          {.v = downvol } },
     { MODKEY,                       XK_F5,     spawn,          {.v = mutevol } },
@@ -121,6 +131,14 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ 0, XF86XK_AudioMute, spawn, {.v = mutecmd } },
+{ 0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+{ 0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
+/* Keybindings for Media play/pause/next/previous */
+{ 0, XF86XK_AudioPlay, spawn, {.v = medplaypausecmd } },
+{ 0, XF86XK_AudioNext, spawn, {.v = mednextcmd } },
+{ 0, XF86XK_AudioPrev, spawn, {.v = medprevcmd } },
+{ 0, XK_Print, spawn, {.v = prtscrcmd } },
 };
 
 /* button definitions */
