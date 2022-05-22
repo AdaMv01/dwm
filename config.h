@@ -73,12 +73,12 @@ static const char *monitor[] = { "/usr/bin/htop", NULL };
 //sets urxvt as the default terminal
 static const char *termcmd[]  = { "st", NULL };
 //volume controls
-static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *upvol[]   = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
+static const char *downvol[] = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
 static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
 static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
 /* Control Media Players */
 static const char *medplaypausecmd[] = { "playerctl", "play-pause", NULL };
@@ -118,9 +118,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,              		    XK_Right,      shiftview,  	   { .i = +1 } },
 	{ MODKEY,              		    XK_Left,      shiftview,      { .i = -1 } },
-    { MODKEY,                       XK_F8,     spawn,          {.v = upvol   } },
-    { MODKEY,                       XK_F7,     spawn,          {.v = downvol } },
-    { MODKEY,                       XK_F5,     spawn,          {.v = mutevol } },
+    { MODKEY,                       XK_F11,     spawn,          {.v = upvol   } },
+    { MODKEY,                       XK_F10,     spawn,          {.v = downvol } },
+    { MODKEY,                       XK_F9,     spawn,          {.v = mutevol } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
