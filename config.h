@@ -73,12 +73,12 @@ static const char *monitor[] = { "/usr/bin/htop", NULL };
 //sets urxvt as the default terminal
 static const char *termcmd[]  = { "st", NULL };
 //volume controls
-static const char *upvol[]   = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
-static const char *downvol[] = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
+static const char *upvol[]   = { "amixer", "-q", "set", "Master", "1%+", "unmute", NULL };
+static const char *downvol[] = { "amixer", "-q", "set", "Master", "1%-", "unmute", NULL };
 static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
-static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "1%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "1%-", "unmute", NULL };
 static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
 /* Control Media Players */
 static const char *medplaypausecmd[] = { "playerctl", "play-pause", NULL };
